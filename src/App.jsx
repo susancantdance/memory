@@ -1,27 +1,73 @@
 import { useState } from "react";
 import { useEffect } from "react";
-import "./App.css";
+import { Shuffle } from "./shuffle.jsx";
+import { Cards } from "./cards.jsx";
+import "./style.css";
 
 function App() {
   const [images, setImages] = useState([]);
-  let refresh = false;
+  const [counter, setCounter] = useState(0);
+
   useEffect(() => {
-    fetch("https://api.thecatapi.com/v1/images/search?limit=10")
+    fetch(
+      "https://api.thecatapi.com/v1/images/search?limit=10&has_breeds=1&api_key=live_1RXeoaDwML2loOXZ2rvQ0gRFX9ClnhtcZg4X5TGLEhKjW3NAphLwXeZaT2OfEvn3"
+    )
       .then((pics) => {
         return pics.json();
       })
       .then((data) => {
-        setImages(data.map((img) => img.url));
+        setImages(
+          data.map((img) => ({
+            url: img.url,
+            breed: img.breeds[0].name,
+            clicked: false,
+          }))
+        );
       });
-  }, [refresh]);
+    // return () => {
+    //   refresh = false;
+    // };
+  }, []);
 
-  console.log(images[1]);
+  console.log(images);
+
+  const clearKitties = (arr) => {
+    for (let i = 0; i < arr.length; i++) {
+      arr[i].clicked = false;
+    }
+  };
+
+  const toggleShuffle = (stillPlaying) => {
+    let newArray = images.slice();
+
+    if (stillPlaying == true && counter < 9) {
+      setCounter(counter + 1);
+    } else if (stillPlaying == false) {
+      setCounter(0);
+      alert("you lose");
+      clearKitties(newArray);
+    } else if (stillPlaying == true && counter == 9) {
+      alert("YOU GOT EM ALL!");
+      setCounter(0);
+      clearKitties(newArray);
+    }
+
+    Shuffle(newArray);
+    setImages(newArray);
+  };
+
+  // let newImages = images.slice();
+
   return (
     <>
-      <h1>HELLO {images[0]}</h1>
-      <img src={images[0]} />
-      <img src={images[1]} />
-      <img src={images[2]} />
+      <h1>YOUR SCORE: {counter}</h1>
+      {/* <button onClick={toggleShuffle}>Shuffle Me</button> */}
+      <Cards
+        imgArray={images}
+        shuffle={toggleShuffle}
+        count={counter}
+        setcounter={setCounter}
+      />
     </>
   );
 }
