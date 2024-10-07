@@ -4,11 +4,12 @@ body {
   justify-content: flex-start;
   align-items: center;
   width: 100vw;
-  /* background-color: red; */
+  background-color: rgb(214, 245, 235);
 }
 
 .container {
-  width: 70vw;
+  width: 75vw;
+  /* background-color: aqua; */
 }
 
 .instr {
@@ -24,16 +25,18 @@ img {
 
 .score {
   display: flex;
+  width: 100%;
   justify-content: space-between;
   font-size: 25px;
   font-weight: bold;
+  /* background-color: blue; */
 }
 
 .card-container {
   display: grid;
-  grid-template-columns: repeat(5, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   grid-template-rows: repeat(auto, 1fr);
-  /* background-color: aqua; */
+  /* background-color: red; */
   gap: 20px;
   padding: 5px;
 }
@@ -41,14 +44,18 @@ img {
 .card {
   display: flex;
   flex-direction: column;
-  background-color: rgb(146, 99, 129);
+  background-color: rgb(145, 172, 155);
+  border-style: solid;
+  border-color: black;
   align-items: center;
   justify-content: center;
+  width: 200px;
   padding: 10px;
 }
 
 .photo {
   object-fit: cover;
+  /* padding: 30px; */
   width: 200px;
   height: 200px;
 }
@@ -58,10 +65,10 @@ img {
   font-weight: bold;
 }
 
-@media screen and (max-width: 1199px) {
+@media screen and (max-width: 1015px) {
   .card-container {
     display: grid;
-    grid-template-columns: repeat(3, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto, minmax(200px, 1fr));
     grid-template-rows: repeat(auto, 1fr);
     /* background-color: aqua; */
     gap: 20px;
@@ -112,7 +119,7 @@ img {
   .card {
     display: flex;
     flex-direction: column;
-    background-color: rgb(146, 99, 129);
+    background-color: rgb(145, 172, 155);
     align-items: center;
     justify-content: center;
     padding: 10px;

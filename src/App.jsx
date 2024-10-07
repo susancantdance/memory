@@ -64,7 +64,7 @@ function App() {
 
   return (
     <div className="container">
-      <h1 className="title">ImPAWsible MeMEOWry Game</h1>
+      <h1 className="title">&#128008; ImPAWsible MeMEOWry Game &#128008;</h1>
       <p className="instr">
         Don&apos;t click on the same breed twice. Can you get all 10? Good luck!
       </p>
