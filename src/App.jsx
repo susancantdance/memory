@@ -63,11 +63,15 @@ function App() {
   // let newImages = images.slice();
 
   return (
-    <>
+    <div className="container">
+      <h1 className="title">ImPAWsible MeMEOWry Game</h1>
+      <p className="instr">
+        Don&apos;t click on the same breed twice. Can you get all 10? Good luck!
+      </p>
       <Score counter={counter} bestScore={bestScore} />
       {/* <button onClick={toggleShuffle}>Shuffle Me</button> */}
       <Cards imgArray={images} shuffle={toggleShuffle} />
-    </>
+    </div>
   );
 }
 
