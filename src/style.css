@@ -36,7 +36,7 @@ img {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   grid-template-rows: repeat(auto, 1fr);
-  /* background-color: red; */
+  /* background-colçor: red; */
   gap: 20px;
   padding: 5px;
 }
@@ -109,7 +109,7 @@ img {
 
   .card-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     grid-template-rows: repeat(auto, 1fr);
     /* background-color: aqua; */
     gap: 20px;
@@ -134,5 +134,17 @@ img {
   .breed {
     font-size: 14px;
     font-weight: bold;
+  }
+}
+
+@media screen and (max-width: 575px) {
+  .card-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* background-color: aqua; */
+    gap: 20px;
+    padding: 5px;
   }
 }
