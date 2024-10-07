@@ -5,6 +5,14 @@ img {
   height: 100%;
 }
 
+.score {
+  width: 70vw;
+  display: flex;
+  justify-content: space-between;
+  font-size: 25px;
+  font-weight: bold;
+}
+
 .card-container {
   display: grid;
   grid-template-columns: repeat(5, 1fr);

@@ -2,11 +2,13 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { Shuffle } from "./shuffle.jsx";
 import { Cards } from "./cards.jsx";
+import { Score } from "./score.jsx";
 import "./style.css";
 
 function App() {
   const [images, setImages] = useState([]);
   const [counter, setCounter] = useState(0);
+  const [bestScore, setScore] = useState(0);
 
   useEffect(() => {
     fetch(
@@ -42,11 +44,13 @@ function App() {
 
     if (stillPlaying == true && counter < 9) {
       setCounter(counter + 1);
+      if (counter + 1 > bestScore) setScore(counter + 1);
     } else if (stillPlaying == false) {
       setCounter(0);
       alert("you lose");
       clearKitties(newArray);
     } else if (stillPlaying == true && counter == 9) {
+      setScore(10);
       alert("YOU GOT EM ALL!");
       setCounter(0);
       clearKitties(newArray);
@@ -60,14 +64,9 @@ function App() {
 
   return (
     <>
-      <h1>YOUR SCORE: {counter}</h1>
+      <Score counter={counter} bestScore={bestScore} />
       {/* <button onClick={toggleShuffle}>Shuffle Me</button> */}
-      <Cards
-        imgArray={images}
-        shuffle={toggleShuffle}
-        count={counter}
-        setcounter={setCounter}
-      />
+      <Cards imgArray={images} shuffle={toggleShuffle} />
     </>
   );
 }
